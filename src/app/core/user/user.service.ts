@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { TokenService } from '../token/token.service';
 import { User } from './user';
 
@@ -10,7 +10,13 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class UserService {
 
-  private userSubject = new Subject<User>();
+  userDefault:User = {
+    name:'Sem usuário',
+    email:'teste@teste.com.br',
+    id:1
+  }
+
+  private userSubject = new BehaviorSubject<User>(this.userDefault);
 
   constructor(
     private tokenService: TokenService
