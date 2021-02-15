@@ -1,0 +1,5 @@
+Subject x BehaviorSubject
+
+Subject - emite um valor com o next, mas caso o observasble de outro componente não esteja pronto no momento. Ele não consegue "ouvir" o valor emitido.
+
+BehaviorSubject - Emie um valor com o next mas continua armazenando a última emissão até que alguém apareça para consumi-la. 
