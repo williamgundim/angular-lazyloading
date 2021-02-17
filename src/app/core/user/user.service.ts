@@ -10,13 +10,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class UserService {
 
-  userDefault:User = {
-    name:'Sem usuário',
-    email:'teste@teste.com.br',
-    id:1
-  }
-
-  private userSubject = new BehaviorSubject<User>(this.userDefault);
+  private userSubject = new BehaviorSubject<User>(null);
 
   constructor(
     private tokenService: TokenService
@@ -48,5 +42,11 @@ export class UserService {
     this.userSubject.next(user);
 
   }
+
+  logout(){
+    this.tokenService.removeToken();
+    this.userSubject.next(null); //Emite null para todos que estão inscritos no getUser().
+  }
+
 
 }

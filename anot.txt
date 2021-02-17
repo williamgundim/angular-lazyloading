@@ -11,3 +11,6 @@ user$ - Boa pratica colocar $ para identificar que é uma variavel observable.
 
 Ao utilizar um retorno de observable, deve colocar ?. pq o valor pode ou não existir naquele momento. Ex.:
 {{ user?.name }}
+
+Async pipe - consegue acessar do template html o valor do observable. Ex.: (user$ | async) as user --> {{ user.idade }}
+
