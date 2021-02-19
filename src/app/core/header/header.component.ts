@@ -18,6 +18,11 @@ export class HeaderComponent {
         private router: Router
     ){
         this.user$ = userService.getUser();
+
+        this.user$.subscribe(user =>{
+            this.dataUser = user
+        })
+
     }
 
     logout(){

@@ -1,9 +1,9 @@
 <header class="fixed-top">
     <nav class="navbar navbar-light bg-white">
         <a class="navbar-brand">ALURAPIC</a>
-        <div *ngIf="(user$ | async) as user ; else login"> 
+        <div *ngIf="dataUser else login"> 
             <i class="fa fa-user-circle"></i>
-            <a> {{ user?.name }}</a> <!--?. = safenavigation -->
+            <a> {{ dataUser?.name }}</a> <!--?. = safenavigation -->
             <a (click)="logout()"> (Logout) </a>
         </div>
     </nav>   

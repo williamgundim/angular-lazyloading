@@ -11,6 +11,7 @@ import * as jwt_decode from 'jwt-decode';
 export class UserService {
 
   private userSubject = new BehaviorSubject<User>(null);
+  private userName: string = '';
 
   constructor(
     private tokenService: TokenService
@@ -38,6 +39,8 @@ export class UserService {
     let token = this.tokenService.getToken();
     let user = jwt_decode(token) as User;
 
+    this.userName = user.name;
+
     //Emite pelo subject um observavble do tipo user. Os outros componentes que estiverem escritos vão receber a notificação com o novo valor.
     this.userSubject.next(user);
 
@@ -48,5 +51,12 @@ export class UserService {
     this.userSubject.next(null); //Emite null para todos que estão inscritos no getUser().
   }
 
+  isLogged(){
+    return this.tokenService.hasToken();
+  }
+
+  getUserName(){
+    return this.userName;
+  }
 
 }
